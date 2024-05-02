@@ -1,0 +1,12 @@
+{
+	"references": [
+		{"path": "packages/utils"},
+		{"path" : "packages/blocks"},
+		{"path" : "packages/builder-panels"},
+		{"path" : "packages/navigation"},
+		{"path" : "packages/types"},
+		{"path" : "packages/payment-gateways"}
+	],
+	"files": []
+
+}

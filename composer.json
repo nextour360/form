@@ -1,0 +1,60 @@
+{
+	"name": "quillforms/quillforms",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"description": "The real revolution for WordPress forms",
+	"homepage": "https://github.com/quillforms/quillforms",
+	"keywords": [
+		"quillforms",
+		"form",
+		"wp",
+		"react",
+		"javascript"
+	],
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"squizlabs/php_codesniffer": "^3.5",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"wp-coding-standards/wpcs": "^2.2",
+		"sirbrillig/phpcs-variable-analysis": "^2.8",
+		"phpunit/phpunit": "^6.5",
+		"spatie/phpunit-watcher": "^1.23",
+		"yoast/phpunit-polyfills": "^1.0"
+	},
+	"require": {
+		"composer/installers": "~1.0",
+		"woocommerce/action-scheduler": "^3.2"
+	},
+	"config": {
+		"process-timeout": 0,
+		"platform": {
+			"php": "7.4"
+		},
+		"preferred-install": {
+			"woocommerce/action-scheduler": "dist"
+		},
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"cd dependencies && composer install"
+		],
+		"post-update-cmd": [
+			"cd dependencies && composer update"
+		],
+		"format": "phpcbf --standard=phpcs.xml.dist --report-summary --report-source",
+		"lint": "phpcs --standard=phpcs.xml.dist",
+		"test": "phpunit",
+		"test:watch": "phpunit-watcher watch < /dev/tty"
+	},
+	"extra": {
+		"installer-paths": {
+			"dependencies/libraries/{$name}": [
+				"woocommerce/action-scheduler"
+			]
+		}
+	}
+}
